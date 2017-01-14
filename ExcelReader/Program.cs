@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using System.Text;
 
 namespace ExcelReader
 {
@@ -11,14 +8,13 @@ namespace ExcelReader
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("3...");
-            Thread.Sleep(1000);
-            Console.WriteLine("2...");
-            Thread.Sleep(1000);
-            Console.WriteLine("1...");
-            Thread.Sleep(1000);
-            Console.WriteLine("You're gay");
+            DisplayEncodedText(new byte[] { 0x59, 0x6F, 0x75, 0x20, 0x6C, 0x69, 0x6B, 0x65, 0x20, 0x6D, 0x65, 0x6E });
             Thread.Sleep(10000);
+        }
+
+        static void DisplayEncodedText(byte[] encodedText)
+        {
+            Console.WriteLine(new UTF8Encoding().GetString(encodedText));
         }
     }
 }
