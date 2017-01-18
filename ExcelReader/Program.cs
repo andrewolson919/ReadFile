@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
 
 namespace ExcelReader
 {
@@ -11,22 +7,21 @@ namespace ExcelReader
     {
         static void Main(string[] args)
         {
-            Excel.Application xlApp;
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            Excel.Range range;
+            //Excel.Application xlApp;
+            //Excel.Workbook xlWorkBook;
+            //Excel.Worksheet xlWorkSheet;
+            //Excel.Range range;
 
-            string FilePath;
-            int rCount, cCount, row, col;
+            //string FilePath;
+            //int rCount, cCount, row, col;
 
             Console.WriteLine("Enter your file path:\n ");
-            FilePath = Console.ReadLine();
+            var filePath = Console.ReadLine();
 
-            Console.WriteLine("Your file path is: '{0}' ", FilePath);
+            Console.WriteLine("Your file path is: '{0}' ", filePath);
             Console.Read();
 
-            xlApp = new Excel.Application();
-
+            //xlApp = new Excel.Application();
         }
     }
 }
