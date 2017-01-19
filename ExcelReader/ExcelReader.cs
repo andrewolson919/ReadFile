@@ -6,43 +6,39 @@ namespace ExcelReader
 {
      public class ExcelReader
     {
-         public string Read(string FilePath)
+         public string[,] Read(string filePath)
          {
-             Excel.Application xlApp;
-             Excel.Workbook xlWorkBook;
-             Excel.Worksheet xlWorkSheet;
-             Excel.Range range;
+             var xlApp = new Excel.Application();
+             var xlWorkBook = xlApp.Workbooks.Open(filePath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", true, false, 0, true, 1, 0);
+             var xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.Item[1];
 
-             int rCnt, cCnt;
-             int rw = 0;
-             int cl = 0;
+             var range = xlWorkSheet.UsedRange;
+             var rowCount = range.Rows.Count;
+             var columnCount = range.Columns.Count;
 
-             xlApp = new Excel.Application();
-             xlWorkBook = xlApp.Workbooks.Open(@FilePath, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", true, false, 0, true, 1, 0);
-             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-             range = xlWorkSheet.UsedRange;
-             rw = range.Rows.Count;
-             cl = range.Columns.Count;
-
-             string[,] Data = new string[rw, cl];
+             var data = new string[rowCount, columnCount];
              
-             for(rCnt=1; rCnt <= rw; rCnt++)
+             for (var rowNumber = 1; rowNumber < rowCount; rowNumber++)
              {
-                 for(cCnt=1; cCnt <=cl; cCnt++)
+                 for (var columnNumber = 1; columnNumber < columnCount; columnNumber++)
                  {
-                     Data[rCnt, cCnt] = (string)(range.Cells[rCnt, cCnt] as Excel.Range).Value2;
+                     var cell = range.Cells[rowNumber, columnNumber] as Excel.Range;
+                     if (cell != null)
+                     {
+                        var cellValue = cell.Value2 != null ? cell.Value2 : "";
+                        data[rowNumber, columnNumber] = cellValue.ToString();
+                     }
                  }
              }
 
-             xlWorkBook.Close(true, null, null);
+             xlWorkBook.Close(true);
              xlApp.Quit();
 
              Marshal.ReleaseComObject(xlWorkSheet);
              Marshal.ReleaseComObject(xlWorkBook);
              Marshal.ReleaseComObject(xlApp);
 
-             return Data[rw,cl];
+             return data;
          }
     }
 }
