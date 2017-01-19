@@ -2,9 +2,9 @@
 using System.Runtime.InteropServices;
 using Excel=Microsoft.Office.Interop.Excel;
 
-namespace ExcelReader
+namespace ExcelMod
 {
-     public class ExcelReader
+     public class ExcelMod
     {
          public string[,] Read(string filePath)
          {
@@ -40,5 +40,20 @@ namespace ExcelReader
 
              return data;
          }
+          
+          public void Display(string[,] result)
+          {
+               var rows =result.GetLength(0);
+               var columns=result.GetLength(1);
+               
+               for(var rowNumber=1; rowNumber <= rows; rowNumber++)
+               {
+                    for(var columnNumber=1; columnNumber <= columns; columnNumber++)
+                    {
+                         Console.Write("{0}\t", result[rowNumber, columnNumber]);
+                    }
+                    Console.WriteLine();
+               }
+          }
     }
 }
