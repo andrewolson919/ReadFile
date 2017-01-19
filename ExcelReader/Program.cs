@@ -7,13 +7,6 @@ namespace ExcelReader
     {
         static void Main(string[] args)
         {
-            //Excel.Application xlApp;
-            //Excel.Workbook xlWorkBook;
-            //Excel.Worksheet xlWorkSheet;
-            //Excel.Range range;
-
-            //string FilePath;
-            //int rCount, cCount, row, col;
 
             Console.WriteLine("Enter your file path:\n ");
             var filePath = Console.ReadLine();
@@ -21,7 +14,11 @@ namespace ExcelReader
             Console.WriteLine("Your file path is: '{0}' ", filePath);
             Console.Read();
 
-            //xlApp = new Excel.Application();
+            ExcelReader trial = new ExcelReader();
+            string[,] result = trial.Read(filePath);
+
+
         }
+
     }
 }
