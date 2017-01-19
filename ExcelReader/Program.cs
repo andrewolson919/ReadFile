@@ -13,20 +13,11 @@ namespace ExcelReader
             Console.WriteLine("Your file path is: '{0}' ", filePath);
             Console.Read();
 
-            var trial = new ExcelReader();
-            var result = trial.Read(filePath);
+            var excelRead = new ExcelMod();
+            var result = excelRead.Read(filePath);
             
-            var rows= result.GetLength(0);
-            var columns= result.GetLength(1);
+            excelRead.Display(result[,]);
             
-            for(var rowNumber=1; rowNumber <= rows; rowNumber++)
-            {
-                for(var columnNumber=1; columnNumber <= columns; columnNumber++)
-                {
-                    Console.Write("{0}\t", result[rowNumber,columnNumber]);
-                }
-                Console.WriteLine();
-            }
             Console.Read();
         }
     }
