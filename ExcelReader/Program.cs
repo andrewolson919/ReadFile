@@ -27,6 +27,7 @@ namespace ExcelReader
                 }
                 Console.WriteLine();
             }
+            Console.Read();
         }
     }
 }
