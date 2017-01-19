@@ -41,7 +41,7 @@ namespace ExcelMod
              return data;
          }
           
-          public void Display(string[,] result)
+          public void Display(var result)
           {
                var rows =result.GetLength(0);
                var columns=result.GetLength(1);
