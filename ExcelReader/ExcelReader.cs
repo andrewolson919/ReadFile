@@ -26,7 +26,7 @@ namespace ExcelReader
                      if (cell != null)
                      {
                         var cellValue = cell.Value2 != null ? cell.Value2 : "";
-                        data[rowNumber+1, columnNumber+1] = cellValue.ToString();
+                        data[rowNumber, columnNumber] = cellValue.ToString();
                      }
                  }
              }
