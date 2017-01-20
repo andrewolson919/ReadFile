@@ -18,15 +18,15 @@ namespace ExcelReader
 
              var data = new string[rowCount, columnCount];
              
-             for (var rowNumber = 1; rowNumber < rowCount; rowNumber++)
+             for (var rowNumber = 0; rowNumber < rowCount; rowNumber++)
              {
-                 for (var columnNumber = 1; columnNumber < columnCount; columnNumber++)
+                 for (var columnNumber = 0; columnNumber < columnCount; columnNumber++)
                  {
-                     var cell = range.Cells[rowNumber, columnNumber] as Excel.Range;
+                     var cell = range.Cells[rowNumber+1, columnNumber+1] as Excel.Range;
                      if (cell != null)
                      {
                         var cellValue = cell.Value2 != null ? cell.Value2 : "";
-                        data[rowNumber, columnNumber] = cellValue.ToString();
+                        data[rowNumber+1, columnNumber+1] = cellValue.ToString();
                      }
                  }
              }
