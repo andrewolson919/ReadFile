@@ -2,14 +2,14 @@
 using System.Runtime.InteropServices;
 using Excel=Microsoft.Office.Interop.Excel;
 
-namespace ExcelMod
+namespace ExcelReader
 {
-     public class ExcelMod
+     public class ExcelReader
     {
          public string[,] Read(string filePath)
          {
              var xlApp = new Excel.Application();
-             var xlWorkBook = xlApp.Workbooks.Open(filePath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", true, false, 0, true, 1, 0);
+             var xlWorkBook = xlApp.Workbooks.Open(filePath);//, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", true, false, 0, true, 1, 0);
              var xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.Item[1];
 
              var range = xlWorkSheet.UsedRange;
@@ -41,7 +41,7 @@ namespace ExcelMod
              return data;
          }
           
-          public void Display(var result)
+          public void Display(string[,] result)
           {
                var rows =result.GetLength(0);
                var columns=result.GetLength(1);

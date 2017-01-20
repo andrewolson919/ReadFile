@@ -13,10 +13,10 @@ namespace ExcelReader
             Console.WriteLine("Your file path is: '{0}' ", filePath);
             Console.Read();
 
-            var excelRead = new ExcelMod();
+            var excelRead = new ExcelReader();
             var result = excelRead.Read(filePath);
             
-            excelRead.Display(result[,]);
+            excelRead.Display(result);
             
             Console.Read();
         }
