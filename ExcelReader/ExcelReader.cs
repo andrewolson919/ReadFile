@@ -46,9 +46,9 @@ namespace ExcelReader
                var rows =result.GetLength(0);
                var columns=result.GetLength(1);
                
-               for(var rowNumber=1; rowNumber < rows; rowNumber++)
+               for(var rowNumber=0; rowNumber < rows; rowNumber++)
                {
-                    for(var columnNumber=1; columnNumber < columns; columnNumber++)
+                    for(var columnNumber=0; columnNumber < columns; columnNumber++)
                     {
                          Console.Write("{0}\t", result[rowNumber, columnNumber]);
                     }
